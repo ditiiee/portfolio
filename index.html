@@ -3,35 +3,36 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Aditi Ankush — Product Designer</title>
+<title>Aditi Ankush</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgcng9IjI0IiBmaWxsPSIjRkY0QTI2Ii8+PGcgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjRkZGRkZGIiBzdHJva2Utd2lkdGg9IjgiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCI+PGxpbmUgeDE9IjM2IiB5MT0iNDAiIHgyPSIzNiIgeTI9IjUzIi8+PGxpbmUgeDE9IjY0IiB5MT0iNDAiIHgyPSI2NCIgeTI9IjUzIi8+PHBhdGggZD0iTTMyIDYxIFE1MCA4MCA2OCA2MSIvPjwvZz48L3N2Zz4K">
 
 <!--
 ==================================================================
   HOW TO CUSTOMIZE — tagged [EDIT]
-    • Name (top-left)  • "Currently working" status (top-right)
-    • Intro sentence   • Helper ("brb") line
-    • Social links (footer)
+    • Name (top-left)   • Intro sentence (doodles are inline spans)
+    • Status line       • Footer links
     • Recolor via the confetti values in :root
 ==================================================================
 -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Inter:wght@400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
 
 <style>
   :root {
-    --cream: #F1ECE0;
-    --ink: #211E19;
-    --muted: #8C8676;
+    --cream: #FAFAF7;   /* clean near-white base */
+    --ink: #1A1A1A;
+    --muted: #6E6E6E;
 
-    --blue:   #2E5BE6;
-    --orange: #E9592B;
-    --pink:   #EE9EBE;
-    --green:  #2F9E58;
-    --yellow: #F2C13C;
+    /* bold, solid pop palette */
+    --blue:   #2B4DFF;
+    --orange: #FF4A26;
+    --pink:   #FF4D9E;
+    --green:  #14B36A;
+    --yellow: #FFC42B;
 
-    --display: 'Fredoka', sans-serif;
+    --display: 'Inter', sans-serif;
     --body: 'Inter', sans-serif;
     --mono: 'Space Mono', monospace;
   }
@@ -53,178 +54,116 @@
   a { color: inherit; }
   :focus-visible { outline: 2.5px solid var(--blue); outline-offset: 4px; border-radius: 4px; }
 
-  /* ---- top bar ---- */
-  .topbar {
-    display: flex; justify-content: space-between; align-items: flex-start;
-    gap: 1rem; flex-wrap: wrap;
-    opacity: 0; animation: fade .6s ease forwards .05s;
+  /* ---- brand wordmark ---- */
+  .brand { opacity: 0; animation: rise .9s cubic-bezier(.22,1,.36,1) forwards .05s; }
+  .brand-mark {
+    font-family: var(--display); font-weight: 800; font-size: 1rem;
+    letter-spacing: 0.01em; text-transform: uppercase;
+    color: var(--ink); text-decoration: none;
   }
-  .wordmark {
-    font-family: var(--display); font-weight: 700; font-size: 1.1rem;
-    letter-spacing: -0.01em; text-decoration: none;
-  }
-  .wordmark .star { color: var(--orange); }
-  .currently {
-    margin-left: auto; text-align: right;
-    font-family: var(--mono); font-size: .7rem; letter-spacing: .1em; text-transform: uppercase;
-    color: var(--muted); line-height: 1.5;
-    display: flex; align-items: center; justify-content: flex-end; gap: .5rem;
-  }
-  .currently .ctext { white-space: nowrap; }
-  .currently .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); flex: none; }
 
   /* ---- main ---- */
   .stage {
-    position: relative; flex: 1;
-    display: flex; align-items: center; justify-content: center;
+    flex: 1; display: flex; align-items: center; justify-content: center;
     padding: clamp(2rem, 6vw, 4rem) 0;
   }
-  .center { text-align: center; max-width: min(92vw, 920px); position: relative; z-index: 2; }
+  .center { text-align: center; max-width: min(92vw, 900px); }
 
   .intro {
-    font-family: var(--display); font-weight: 500;
-    font-size: clamp(1.7rem, 4.4vw, 2.9rem);
-    line-height: 1.18; letter-spacing: -0.015em;
+    font-family: var(--display); font-weight: 800;
+    font-size: clamp(2.1rem, 5.6vw, 4rem);
+    line-height: 1.14; letter-spacing: -0.03em;
     text-wrap: balance;
-    opacity: 0; animation: rise .8s ease forwards .2s;
+    opacity: 0; animation: rise .9s cubic-bezier(.22,1,.36,1) forwards .2s;
   }
+
+  /* inline doodles woven into the headline */
+  .dd { display: inline-block; color: var(--c); vertical-align: -0.14em; margin: 0 .04em;
+        transition: transform .35s cubic-bezier(.34,1.56,.64,1); }
+  .dd svg { height: 1.02em; width: auto; display: block; }
+  .dd:hover { transform: rotate(-8deg) scale(1.12); }
+  .nb { white-space: nowrap; }  /* keep each word glued to its emoji */
+  .emo { font-size: .9em; }
+  .dd-flower { --c: var(--orange); }
+  .dd-smiley { --c: var(--green); }
+  .dd-sun    { --c: var(--yellow); }
+  .dd-wavy   { --c: var(--pink); vertical-align: -0.02em; }
+
   .helper {
-    margin-top: clamp(1.6rem, 4vw, 2.2rem);
-    font-family: var(--mono); font-size: clamp(.78rem, 2vw, .92rem);
-    letter-spacing: .04em; color: var(--muted);
-    display: inline-flex; align-items: center; gap: .55rem;
-    opacity: 0; animation: rise .8s ease forwards .45s;
+    margin: clamp(1.6rem, 4vw, 2.2rem) auto 0;
+    font-family: var(--mono); font-size: clamp(.78rem, 1.9vw, .88rem);
+    line-height: 1.6; letter-spacing: .01em; color: var(--muted);
+    text-wrap: balance;
+    opacity: 0; animation: rise .9s cubic-bezier(.22,1,.36,1) forwards .45s;
   }
-  .helper .pot { width: 15px; height: 15px; color: var(--orange); flex: none; }
+  .helper .pot { display: inline-block; width: 15px; height: 15px; color: var(--orange); vertical-align: -0.22em; margin-right: .2rem; }
   .helper .pot svg { width: 100%; height: 100%; display: block; }
   .helper .steam { animation: steam 2.6s ease-in-out infinite; transform-origin: center; }
 
-  /* ---- doodle row (sits directly above the intro) ---- */
-  .doodle-row {
-    display: flex; justify-content: center; align-items: center;
-    gap: clamp(1.4rem, 4vw, 2.6rem);
-    margin-bottom: clamp(1.6rem, 4vw, 2.4rem);
-    opacity: 0; animation: rise .8s ease forwards .1s;
-  }
-  .doodle { color: var(--c); line-height: 0; }
-  .doodle svg { display: block; animation: float 6s ease-in-out infinite; }
-  .d1 { --c: var(--orange); }
-  .d3 { --c: var(--green); }
-  .d2 { --c: var(--yellow); }
-  .d4 { --c: var(--pink); }
-  .d1 svg, .d2 svg, .d3 svg { width: 72px; height: 72px; }
-  .d4 svg { width: 96px; height: 58px; }
-  .d2 svg { animation-duration: 7s; animation-delay: -1s; }
-  .d3 svg { animation-duration: 5.4s; animation-delay: -.5s; }
-  .d4 svg { animation-duration: 6.6s; animation-delay: -2s; }
-
   /* ---- footer ---- */
   .footer {
-    display: flex; justify-content: center; align-items: center; gap: 1.2rem;
-    font-family: var(--mono); font-size: .74rem; letter-spacing: .08em;
-    color: var(--muted);
+    display: flex; flex-direction: column; align-items: center; gap: 1rem;
+    padding-top: 1.5rem;
     opacity: 0; animation: fade .7s ease forwards .7s;
   }
-  .footer a { text-decoration: none; transition: color .2s ease; }
+  .status {
+    font-family: var(--mono); font-size: .7rem; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--muted); line-height: 1.6; text-align: center;
+  }
+  .status .dot {
+    display: inline-block; width: 7px; height: 7px; border-radius: 50%;
+    background: var(--green); vertical-align: middle; margin-right: .5rem;
+  }
+  .footer .links {
+    display: flex; align-items: center; gap: 1rem;
+    font-family: var(--mono); font-size: .78rem; letter-spacing: .05em; color: var(--muted);
+  }
+  .footer a { text-decoration: none; padding: .3rem .2rem; border-radius: 4px; transition: color .2s ease; }
   .footer a:hover, .footer a:focus-visible { color: var(--ink); }
   .footer .sep { width: 4px; height: 4px; border-radius: 50%; background: var(--muted); opacity: .6; }
 
   @keyframes rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
   @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
-  @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
   @keyframes steam { 0%,100% { transform: translateY(0); opacity: .9; } 50% { transform: translateY(-2px); opacity: .5; } }
 
   @media (prefers-reduced-motion: reduce) {
     * { animation: none !important; }
-    .topbar, .intro, .helper, .footer { opacity: 1 !important; }
+    .brand, .intro, .helper, .footer { opacity: 1 !important; }
   }
-  /* tablet */
-  @media (max-width: 900px) {
-    .d1 svg, .d2 svg, .d3 svg { width: 60px; height: 60px; }
-    .d4 svg { width: 82px; height: 50px; }
-  }
-  /* phone */
   @media (max-width: 620px) {
-    .topbar { flex-direction: column; align-items: flex-start; gap: .45rem; }
-    .currently { margin-left: 0; justify-content: flex-start; text-align: left; align-items: center; font-size: .64rem; }
-    .currently .ctext { max-width: none; }
-    .currently .dot { margin-top: 0; }
     .stage { padding: clamp(1.5rem, 8vw, 3rem) 0; }
-    .doodle-row { gap: clamp(1rem, 5vw, 1.6rem); }
-    .d1 svg, .d2 svg, .d3 svg { width: 48px; height: 48px; }
-    .d4 svg { width: 66px; height: 40px; }
+    .status { font-size: .62rem; }
+  }
+  @media (max-width: 400px) {
+    .intro { font-size: clamp(1.65rem, 8vw, 2rem); }
+    .footer { font-size: .68rem; gap: .9rem; }
+  }
+  @media (max-height: 560px) {
+    .stage { padding: 1.25rem 0; }
+    .intro { font-size: clamp(1.5rem, 4.8vw, 2.4rem); }
+    .helper { margin-top: 1rem; }
   }
 </style>
 </head>
 <body>
 
-  <!-- ===== top bar ===== -->
-  <header class="topbar">
+  <!-- ===== brand ===== -->
+  <header class="brand">
     <!-- [EDIT] name -->
-    <a class="wordmark" href="#">Aditi Ankush<span class="star"> ✦</span></a>
-    <!-- [EDIT] currently -->
-    <span class="currently"><span class="dot"></span><span class="ctext">Currently working at WongDoody, Bengaluru</span></span>
+    <span class="brand-mark">Aditi Ankush</span>
   </header>
 
   <!-- ===== main ===== -->
   <main class="stage">
     <div class="center">
 
-      <!-- doodle row (flower · smiley · sun · wavy) -->
-      <div class="doodle-row" aria-hidden="true">
-        <span class="doodle d1">
-          <svg viewBox="0 0 100 100"><g fill="currentColor">
-            <ellipse cx="50" cy="26" rx="17" ry="24"/>
-            <ellipse cx="50" cy="26" rx="17" ry="24" transform="rotate(60 50 50)"/>
-            <ellipse cx="50" cy="26" rx="17" ry="24" transform="rotate(120 50 50)"/>
-            <ellipse cx="50" cy="26" rx="17" ry="24" transform="rotate(180 50 50)"/>
-            <ellipse cx="50" cy="26" rx="17" ry="24" transform="rotate(240 50 50)"/>
-            <ellipse cx="50" cy="26" rx="17" ry="24" transform="rotate(300 50 50)"/>
-          </g><circle cx="50" cy="50" r="12" fill="var(--cream)"/></svg>
-        </span>
+      <!-- [EDIT] intro — the <span class="dd ..."> pieces are the inline doodles -->
+      <h1 class="intro">Hi, I'm <span class="nb">Aditi <span class="emo" aria-hidden="true">🌹</span></span> a product <span class="nb">designer <span class="emo" aria-hidden="true">🏺 📱 🎪</span>,</span> <span class="nb">sketchnoter <span class="emo" aria-hidden="true">🖍️</span></span> &amp; design <span class="nb">researcher <span class="emo" aria-hidden="true">👁️</span></span></h1>
 
-        <span class="doodle d3">
-          <svg viewBox="0 0 100 100">
-            <circle cx="50" cy="50" r="46" fill="currentColor"/>
-            <g fill="none" stroke="var(--ink)" stroke-width="5" stroke-linecap="round">
-              <line x1="37" y1="41" x2="37" y2="52"/><line x1="63" y1="41" x2="63" y2="52"/>
-              <path d="M33 62 Q50 79 67 62"/>
-            </g></svg>
-        </span>
-
-        <span class="doodle d2">
-          <svg viewBox="0 0 100 100">
-            <g stroke="currentColor" stroke-width="7" stroke-linecap="round">
-              <line x1="50" y1="7" x2="50" y2="21"/>
-              <line x1="50" y1="7" x2="50" y2="21" transform="rotate(45 50 50)"/>
-              <line x1="50" y1="7" x2="50" y2="21" transform="rotate(90 50 50)"/>
-              <line x1="50" y1="7" x2="50" y2="21" transform="rotate(135 50 50)"/>
-              <line x1="50" y1="7" x2="50" y2="21" transform="rotate(180 50 50)"/>
-              <line x1="50" y1="7" x2="50" y2="21" transform="rotate(225 50 50)"/>
-              <line x1="50" y1="7" x2="50" y2="21" transform="rotate(270 50 50)"/>
-              <line x1="50" y1="7" x2="50" y2="21" transform="rotate(315 50 50)"/>
-            </g><circle cx="50" cy="50" r="16" fill="currentColor"/></svg>
-        </span>
-
-        <span class="doodle d4">
-          <svg viewBox="0 0 104 60">
-            <path fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round"
-                  d="M8 32 q13 -24 26 0 t26 0 t26 0"/></svg>
-        </span>
-      </div>
-
-      <!-- [EDIT] intro -->
-      <h1 class="intro">Hi, I'm Aditi. I am a product designer, sketchnoter and design researcher.</h1>
       <!-- [EDIT] helper line -->
       <p class="helper">
-        <span class="pot" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <g class="steam"><path d="M9 3c-.6.8-.6 1.7 0 2.5"/><path d="M15 3c-.6.8-.6 1.7 0 2.5"/></g>
-            <path d="M4 10h16v4a6 6 0 0 1-6 6h-4a6 6 0 0 1-6-6z" fill="currentColor" stroke="none"/>
-            <path d="M20 12h1.5a1.5 1.5 0 0 1 0 3H20" />
-          </svg>
-        </span>
-        Cooking some butter chicken and this website. Brb!
+        Currently working as an Experience designer at WongDoody, Bengaluru.
+        <span class="pot" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><g class="steam"><path d="M9 3c-.6.8-.6 1.7 0 2.5"/><path d="M15 3c-.6.8-.6 1.7 0 2.5"/></g><path d="M4 10h16v4a6 6 0 0 1-6 6h-4a6 6 0 0 1-6-6z" fill="currentColor" stroke="none"/><path d="M20 12h1.5a1.5 1.5 0 0 1 0 3H20"/></svg></span>Cooking some butter chicken and this website. Brb!
       </p>
 
     </div>
@@ -232,10 +171,14 @@
 
   <!-- ===== footer ===== -->
   <footer class="footer">
-    <!-- [EDIT] socials -->
-    <a href="https://www.linkedin.com/in/aditiankush/" target="_blank" rel="noopener">LinkedIn</a>
-    <span class="sep" aria-hidden="true"></span>
-    <a href="https://www.instagram.com/ditiiee/" target="_blank" rel="noopener">@ditiiee</a>
+    <!-- [EDIT] links — point Resume at your PDF (a Google Drive link, or a resume.pdf you upload to this repo) -->
+    <nav class="links" aria-label="Links">
+      <a href="#" target="_blank" rel="noopener">Resume</a>
+      <span class="sep" aria-hidden="true"></span>
+      <a href="https://www.linkedin.com/in/aditiankush/" target="_blank" rel="noopener">LinkedIn</a>
+      <span class="sep" aria-hidden="true"></span>
+      <a href="https://www.instagram.com/ditiiee/" target="_blank" rel="noopener">@ditiiee</a>
+    </nav>
   </footer>
 
 </body>
